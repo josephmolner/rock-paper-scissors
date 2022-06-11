@@ -1,11 +1,16 @@
-console.log("testing testing")
-
-
- // Create variable to store data from the computer selection: "computerSelection"
+// Create variable to store data from the computer selection: "computerSelection"
+// const computerSelection
+// Create variable for player selection: "playerSelection", 
+//const playerSelection
+//store user input in "playerSelection via prompt.
 
  /* Create function "computerPlay" to generate random selection from strings "rock", "paper", "scissors", and store in "computerSelection */
+ //function computerPlay () {
+    const choices = ['rock','paper','scissors'];
+    const random = Math.floor(Math.random()* choices.length);
+    console.log(choices[random]); 
+// }
 
- // Create variable for player selection: "playerSelection", and store user input via prompt.
 
  // Convert user input to lowercase
 
