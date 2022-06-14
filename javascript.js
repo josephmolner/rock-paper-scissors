@@ -1,23 +1,20 @@
 
 
  /* Create function "computerPlay" to generate random selection from strings "rock", "paper", "scissors", and store in "computerSelection */
+
  function computerPlay () {
     const choices = ['rock','paper','scissors'];
     const random = Math.floor(Math.random() * choices.length);
     return choices[random];
 }
-
 // Create variable to store data from the computer selection: "computerSelection"
 
 const computerSelection = computerPlay(); 
 
 // Create variable for player selection: "playerSelection", 
 
-const playerSelection = prompt
-//store user input in "playerSelection via prompt.
-
+const playerSelection = prompt("Make Your Choice").toLowerCase(); //store user input in "playerSelection via prompt.
  // Convert user input to lowercase
-
  // Create conditional to check that user input is either "rock", "paper", or "scissors".
 
  // Prompt user for new input if not equal to "rock", "paper", or "scissors".
