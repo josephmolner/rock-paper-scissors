@@ -32,20 +32,19 @@ function playerChoice() {
     }
     input = input.toLowerCase();  // Convert user input to lowercase
     let check = validateInput(input) // Create conditional to check user input.
-    if (check == true) {
-        console.log(input)
-    } else {
-        input = prompt("Check your spelling. Choose Rock, Paper, or Scissors.");
-        
+    while (check == false) {
+        input = prompt(
+            "Check your spelling. Choose Rock, Paper, or Scissors."
+            );
+            input = input.toLowerCase();  // this resets input back to true and breaks the loop.
+            check = validateInput(input)
     }
 }
 //this function check against the original array used in computerChoice.
 function validateInput(choice) {
-    if (choices.includes(choice)) { 
-    return true
-    } else {
-        return false
-    }
+    return choices.includes(choice); { 
+    } 
+
 }
 
 
