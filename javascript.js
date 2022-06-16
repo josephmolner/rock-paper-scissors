@@ -3,7 +3,8 @@ const choices = ['rock','paper','scissors'];
 const computerSelection = computerChoice(); 
 const playerSelection = playerChoice();
 const winner = checkWinner(computerSelection, playerSelection);
-console.log(winner);
+
+console.log("Player: " + playerSelection, "Computer: " + computerSelection, winner);
 
 function game(){
    // playRound()
@@ -17,7 +18,7 @@ function computerChoice () {
     const random = Math.floor(Math.random() * choices.length);
     return choices[random];
 }
-console.log(computerSelection)
+//console.log(computerSelection)
 
 function playerChoice() {
     let input = prompt("Choose Rock, Paper, or Scissors."); //store user input in "playerSelection via prompt.
@@ -35,6 +36,7 @@ function playerChoice() {
              check = validateInput(input);
         }
         //console.log(input);
+        alert("You Chose "+input);
         return(input);
 }
 
