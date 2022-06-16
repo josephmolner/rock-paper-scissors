@@ -1,64 +1,63 @@
 const choices = ['rock','paper','scissors'];
 
-// Create function called game that calls "playRound"
-function game(){
-    playRound()
-    // Loop to keep score, ending gameplay after 5 rounds. Winner is best of 5 rounds.
+const computerSelection = computerChoice(); 
+const playerSelection = playerChoice();
+const winner = checkWinner(computerSelection, playerSelection);
+console.log(winner);
 
+function game(){
+   // playRound()
 }
  
-function playRound(computerSelection, playerSelection){
-    // Use function playRound that takes "playerSelection" and "computerSelection" and measures their results against a hierarchy
+//function playRound() {
 
-     // Return a string based on each possible result, claiming user is either a winner or loser of the round
+//}
 
-}
-
-
- /* Create function "computerChoice" to generate random selection from strings "rock", "paper", "scissors" */
 function computerChoice () {
     const random = Math.floor(Math.random() * choices.length);
     return choices[random];
 }
+console.log(computerSelection)
 
-const computerSelection = computerChoice(); 
-
-const playerSelection = playerChoice() 
- 
 function playerChoice() {
     let input = prompt("Choose Rock, Paper, or Scissors."); //store user input in "playerSelection via prompt.
-    while (input == null) { // null cannot be converted .tolowercase.
-        input = prompt("Choose Rock, Paper, or Scissors.");
+    while (input == null) { 
+    input = prompt("Choose Rock, Paper, or Scissors.");
     }
     input = input.toLowerCase();  // Convert user input to lowercase
-    let check = validateInput(input) // Create conditional to check user input.
+    let check = validateInput(input); // Create conditional to check user input.
     while (check == false) {
-        input = prompt(
-            "Check your spelling. Choose Rock, Paper, or Scissors."
-            );
+        input = prompt("Check your spelling. Choose Rock, Paper, or Scissors.");
+        while (input == null) { 
+        input = prompt("Choose Rock, Paper, or Scissors.");
+            }
             input = input.toLowerCase();  // this resets input back to true and breaks the loop.
-            check = validateInput(input)
-    }
+             check = validateInput(input);
+        }
+        //console.log(input);
+        return(input);
 }
+
 //this function check against the original array used in computerChoice.
 function validateInput(choice) {
-    return choices.includes(choice); { 
-    } 
+    return choices.includes(choice);
+}
+function checkWinner(choiceC, choiceP){
+    if (choiceC === choiceP) {
+        return "Tie";
+    } else if (choiceC === 'rock' && choiceP === 'paper'){
+        return "You win! Paper beats rock!";
+    } else if (choiceC === 'paper' && choiceP === 'scissors'){
+        return "You win! scissors beats paper!"; 
+    } else if (choiceC === 'scissors' && choiceP === 'rock'){
+                return "You win! rock beats scissors!";
+    } else if (choiceC === 'rock' && choiceP === 'scissors'){
+        return "You lose! Rock beats scissors!";
+    } else if (choiceC === 'paper' && choiceP === 'rock'){
+        return "You lose! Paper beats rock!"; 
+    } else if (choiceC === 'scissors' && choiceP === 'paper'){
+        return "You lose! Scissors beat paper!";
+    }
 
 }
-
-
-
-
-
- 
-
- // Prompt user for new input if not equal to "rock", "paper", or "scissors".
-
-
-
-
- 
-
- 
- // Output a string that declares the user a winner or loser
+game();
