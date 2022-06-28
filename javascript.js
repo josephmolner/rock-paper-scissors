@@ -1,20 +1,31 @@
 const choices = ['rock','paper','scissors'];
+let playerScore = 0;
+let computerScore = 0;
+let ties = 0;
 
-const computerSelection = computerChoice(); 
-const playerSelection = playerChoice();
-const winner = checkWinner(computerSelection, playerSelection);
+function game() {
+    for (let i = 0; i < 5; i++){
 
-console.log("Player: " + playerSelection, "Computer: " + computerSelection, winner);
-
-function game(){
-   // playRound()
+        playRound();
+            }
+        
+            console.log("Game over!");
+        
 }
- 
-//function playRound() {
+  //  return console.log("Five Rounds played. Game Over!")
 
-//}
+function playRound (){
+    const computerSelection = computerChoice(); 
+    const playerSelection = playerChoice();
+    const winner = checkWinner(computerSelection, playerSelection);
+    console.log("Player: " + playerSelection, "Computer: " + computerSelection + " ", winner);
+    console.log("player score: "+ playerScore);
+    console.log("computer score: "+ computerScore);
+    console.log("ties: "+ ties);
+    keepScore();
+}
 
-function computerChoice () {
+function computerChoice() {
     const random = Math.floor(Math.random() * choices.length);
     return choices[random];
 }
@@ -36,7 +47,7 @@ function playerChoice() {
              check = validateInput(input);
         }
         //console.log(input);
-        alert("You Chose "+input);
+        alert("You chose "+input);
         return(input);
 }
 
@@ -46,20 +57,28 @@ function validateInput(choice) {
 }
 function checkWinner(choiceC, choiceP){
     if (choiceC === choiceP) {
-        return "Tie";
+        return ties++, "Tie. Play again!";
     } else if (choiceC === 'rock' && choiceP === 'paper'){
-        return "You win! Paper beats rock!";
+        return playerScore++, "You win! Paper beats rock!";
     } else if (choiceC === 'paper' && choiceP === 'scissors'){
-        return "You win! scissors beats paper!"; 
+        return playerScore++,"You win! scissors beats paper!"; 
     } else if (choiceC === 'scissors' && choiceP === 'rock'){
-                return "You win! rock beats scissors!";
+        return playerScore++,"You win! rock beats scissors!";
     } else if (choiceC === 'rock' && choiceP === 'scissors'){
-        return "You lose! Rock beats scissors!";
+        return computerScore++, "You lose! Rock beats scissors!";
     } else if (choiceC === 'paper' && choiceP === 'rock'){
-        return "You lose! Paper beats rock!"; 
+        return computerScore++, "You lose! Paper beats rock!"; 
     } else if (choiceC === 'scissors' && choiceP === 'paper'){
-        return "You lose! Scissors beat paper!";
+        return computerScore++, "You lose! Scissors beat paper!";
     }
 
 }
+function keepScore (){
+    if (playerScore == 3) { 
+     console.log("Congratulations! You've won best of five!");
+    } else if (computerScore == 3) {
+        console.log("You lost, better luck next time.");
+        }
+    }
+
 game();
