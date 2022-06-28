@@ -1,36 +1,42 @@
+//Global Array for both computer and user selections
 const choices = ['rock','paper','scissors'];
+//Score keeping variables, ties are not counted.
 let playerScore = 0;
 let computerScore = 0;
-let ties = 0;
 
+//A loop calling playRound runs until broken by a score threshold, 3, for best of 5 
 function game() {
-    for (let i = 0; i < 5; i++){
-
+    alert("Let's play Rock Paper Scissors using the developer console. Best of Five Rounds Wins. Good Luck!");
+    while (playerScore < 3 && computerScore < 3) {
         playRound();
-            }
-        
-            console.log("Game over!");
-        
-}
-  //  return console.log("Five Rounds played. Game Over!")
-
+        //if player wins, print this messgae.
+        if (playerScore == 3){
+            return console.log("Congratulations! You've won best of five!");
+        //if computer wins print this message instead
+        } else if (computerScore ==3) {
+            return console.log("Game Over. You lost, better luck next time.");
+        }
+    }
+    
+}            
+//Takes user through one round, outputs a string declaring the winner.
 function playRound (){
     const computerSelection = computerChoice(); 
     const playerSelection = playerChoice();
     const winner = checkWinner(computerSelection, playerSelection);
-    console.log("Player: " + playerSelection, "Computer: " + computerSelection + " ", winner);
-    console.log("player score: "+ playerScore);
-    console.log("computer score: "+ computerScore);
-    console.log("ties: "+ ties);
-    keepScore();
+    console.log("Player: " + playerSelection);
+    console.log("Computer: " + computerSelection);
+    console.log(winner);
+    console.log("   player score: "+ playerScore);
+    console.log("   computer score: "+ computerScore);
+    //this line enhances legibility in the console
+    console.log("------------------------")
 }
-
+//Generates a random choice from global array choices.
 function computerChoice() {
     const random = Math.floor(Math.random() * choices.length);
     return choices[random];
 }
-//console.log(computerSelection)
-
 function playerChoice() {
     let input = prompt("Choose Rock, Paper, or Scissors."); //store user input in "playerSelection via prompt.
     while (input == null) { 
@@ -46,7 +52,7 @@ function playerChoice() {
             input = input.toLowerCase();  // this resets input back to true and breaks the loop.
              check = validateInput(input);
         }
-        //console.log(input);
+        //Courtesy alert to notify user of their selection
         alert("You chose "+input);
         return(input);
 }
@@ -55,9 +61,10 @@ function playerChoice() {
 function validateInput(choice) {
     return choices.includes(choice);
 }
+//Contains logic for winner, with a corresponding string, and incriments a counter stored in global variable 
 function checkWinner(choiceC, choiceP){
     if (choiceC === choiceP) {
-        return ties++, "Tie. Play again!";
+        return "Tie. Play again!";
     } else if (choiceC === 'rock' && choiceP === 'paper'){
         return playerScore++, "You win! Paper beats rock!";
     } else if (choiceC === 'paper' && choiceP === 'scissors'){
@@ -71,14 +78,5 @@ function checkWinner(choiceC, choiceP){
     } else if (choiceC === 'scissors' && choiceP === 'paper'){
         return computerScore++, "You lose! Scissors beat paper!";
     }
-
 }
-function keepScore (){
-    if (playerScore == 3) { 
-     console.log("Congratulations! You've won best of five!");
-    } else if (computerScore == 3) {
-        console.log("You lost, better luck next time.");
-        }
-    }
-
 game();
